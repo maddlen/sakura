@@ -1,0 +1,58 @@
+{
+    "name": "maddlen/sakura",
+    "description": "Heroku toolbox for Laravel",
+    "keywords": [
+        "maddlen",
+        "sakura"
+    ],
+    "homepage": "https://github.com/maddlen/sakura",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Hervé Guétin",
+            "email": "madle@gmaill.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "*",
+        "php-heroku-client/php-heroku-client": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.21",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Maddlen\\Sakura\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Maddlen\\Sakura\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Maddlen\\Sakura\\SakuraServiceProvider"
+            ],
+            "aliases": {
+                "Sakura": "Maddlen\\Sakura\\SakuraFacade"
+            }
+        }
+    }
+}
