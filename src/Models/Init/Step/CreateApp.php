@@ -7,7 +7,7 @@ namespace Maddlen\Sakura\Models\Init\Step;
 
 use Exception;
 use Maddlen\Sakura\Services\Client;
-use Maddlen\Sakura\Services\Procfile as Procfile;
+use Maddlen\Sakura\Services\HerokuApp;
 
 class CreateApp implements StepInterface
 {
@@ -17,7 +17,7 @@ class CreateApp implements StepInterface
         $response = Client::post('apps');
         $tempApp = $response->name;
         try {
-            Client::patch('apps/' . $tempApp, ['name' => Procfile::config(Procfile::HEROKU_APP_NAME_CONFIG_KEY)]);
+            Client::patch('apps/' . $tempApp, ['name' => HerokuApp::name()]);
         } catch (Exception $exception) { // App already exists
             Client::delete('apps/' . $tempApp);
         }

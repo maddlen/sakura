@@ -7,10 +7,11 @@ namespace Maddlen\Sakura\Services;
 
 use Exception;
 use Illuminate\Support\Collection;
+use Maddlen\Sakura\Models\Init\Step\Buildpacks;
 use Maddlen\Sakura\Models\Init\Step\CreateApp;
-use Maddlen\Sakura\Models\Init\Step\GitCreateRemote;
 use Maddlen\Sakura\Models\Init\Step\EnvFile;
 use Maddlen\Sakura\Models\Init\Step\GitCommit;
+use Maddlen\Sakura\Models\Init\Step\GitCreateRemote;
 use Maddlen\Sakura\Models\Init\Step\GitPush;
 use Maddlen\Sakura\Models\Init\Step\Procfile as Procfile;
 use Maddlen\Sakura\Models\Init\Step\PushConfigVars;
@@ -28,6 +29,7 @@ class Init
             Procfile::class,
             CreateApp::class,
             EnvFile::class,
+            Buildpacks::class,
             PushConfigVars::class,
             GitCommit::class,
             GitCreateRemote::class

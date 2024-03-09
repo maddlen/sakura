@@ -11,7 +11,7 @@ class ConfigVars
 
     public function __construct()
     {
-        $this->path = sprintf('apps/%s/config-vars', Procfile::config(Procfile::HEROKU_APP_NAME_CONFIG_KEY));
+        $this->path = sprintf('apps/%s/config-vars', HerokuApp::name());
     }
 
     public static function push(): void

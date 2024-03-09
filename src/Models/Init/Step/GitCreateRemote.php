@@ -9,7 +9,7 @@ use Exception;
 use Illuminate\Support\Facades\Process;
 use Maddlen\Sakura\Exceptions\GitException;
 use Maddlen\Sakura\Services\Client;
-use Maddlen\Sakura\Services\Procfile as Procfile;
+use Maddlen\Sakura\Services\HerokuApp;
 
 class GitCreateRemote implements StepInterface
 {
@@ -17,7 +17,7 @@ class GitCreateRemote implements StepInterface
     public function run(): void
     {
         try {
-            $gitUrl = Client::get('apps/' . Procfile::config(Procfile::HEROKU_APP_NAME_CONFIG_KEY))->git_url;
+            $gitUrl = Client::get('apps/' . HerokuApp::name())->git_url;
             Process::run("git remote add heroku {$gitUrl}");
         } catch (Exception $e) {
             throw new GitException('Failed creating Heroku remote to Git. Please create the remote manually.');
