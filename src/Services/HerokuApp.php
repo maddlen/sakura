@@ -9,7 +9,7 @@ use Maddlen\Sakura\Services\Procfile as Procfile;
 
 class HerokuApp
 {
-    public static function name(): string
+    public static function name(): ?string
     {
         return Procfile::config(Procfile::HEROKU_APP_NAME_CONFIG_KEY);
     }
