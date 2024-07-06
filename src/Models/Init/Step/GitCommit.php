@@ -17,7 +17,7 @@ class GitCommit implements StepInterface
     public function run(): void
     {
         try {
-            $files = collect([Procfile::getProcfile(), EnvFile::getEnvFile()]);
+            $files = collect([Procfile::getProcfile(), EnvFile::getEnvFile(), base_path('composer.json'), base_path('composer.lock')]);
             $files->each(fn($file) => Process::run("git add {$file}"));
             Process::run("git commit -m 'Heroku setup'");
         } catch (Exception $e) {
